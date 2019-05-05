@@ -24,11 +24,9 @@ Usage
 
 After adding the package as a dependency, Please read the following:
 
-```
+```php
 $memcache = new \Clivern\Memcached\MemcachedClient('127.0.0.1', 11211);
-
 $memcache->add('test_memcache', 'test');
-
 var_dump($memcache->get('test_memcache'));
 ```
 
