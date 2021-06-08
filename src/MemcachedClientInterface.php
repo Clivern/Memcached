@@ -36,6 +36,16 @@ interface MemcachedClientInterface
     public function set($key, $value, $expiration);
 
     /**
+     * Compare and swap an item.
+     *
+     * @param float  $casToken
+     * @param string $key
+     * @param mixed  $value
+     * @param int    $expiration
+     */
+    public function cas($casToken, $key, $value, $expiration = 0): bool;
+
+    /**
      * Replace a value.
      *
      * @param string $key
@@ -48,10 +58,12 @@ interface MemcachedClientInterface
      * Get a value by key.
      *
      * @param string $key
+     * @param mixed  $cacheCallback
+     * @param int    $flags
      *
      * @return mixed
      */
-    public function get($key);
+    public function get($key, $cacheCallback = null, $flags = null);
 
     /**
      * Increment a key.

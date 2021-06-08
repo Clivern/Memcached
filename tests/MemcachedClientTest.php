@@ -17,7 +17,7 @@ class MemcachedClientTest extends TestCase
     /**
      * Setup.
      */
-    public function setUp()
+    protected function setUp()
     {
         $this->memcachedClient = $this->createMock(MemcachedClient::class);
 

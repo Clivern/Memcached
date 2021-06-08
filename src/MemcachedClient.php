@@ -61,6 +61,14 @@ class MemcachedClient implements MemcachedClientInterface
     /**
      * {@inheritdoc}
      */
+    public function cas($casToken, $key, $value, $expiration = 0): bool
+    {
+        return $this->client->cas($casToken, $key, $value, $expiration);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     public function replace($key, $value, $expiration = 0)
     {
         return $this->client->replace($key, $value, $expiration);
@@ -69,9 +77,9 @@ class MemcachedClient implements MemcachedClientInterface
     /**
      * {@inheritdoc}
      */
-    public function get($key)
+    public function get($key, $cacheCallback = null, $flags = null)
     {
-        return $this->client->get($key);
+        return $this->client->get($key, $cacheCallback, $flags);
     }
 
     /**

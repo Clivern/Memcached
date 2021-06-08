@@ -3,7 +3,7 @@ Memcached
 
 Memcached Client for PHP.
 
-[![Build Status](https://travis-ci.org/Clivern/Memcached.svg?branch=master)](https://travis-ci.org/Clivern/Memcached)
+[![CI Build](https://github.com/Clivern/Memcached/actions/workflows/php.yml/badge.svg)](https://github.com/Clivern/Memcached/actions/workflows/php.yml)
 [![License](https://poser.pugx.org/clivern/memcached/license.svg)](https://packagist.org/packages/clivern/memcached)
 [![Latest Stable Version](https://poser.pugx.org/clivern/memcached/v/stable.svg)](https://packagist.org/packages/clivern/memcached)
 
@@ -35,6 +35,11 @@ Misc
 
 Changelog
 ---------
+Version 1.1.0:
+```
+Support "check and set" Operation.
+```
+
 Version 1.0.0:
 ```
 Initial Release.
