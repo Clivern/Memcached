@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of Clivern Memcached Bundle
  * (c) Clivern <hello@clivern.com>
@@ -44,6 +46,16 @@ interface MemcachedClientInterface
      * @param int    $expiration
      */
     public function cas($casToken, $key, $value, $expiration = 0): bool;
+
+    /**
+     * Compare and swap an item.
+     *
+     * @param float  $casToken
+     * @param string $key
+     * @param mixed  $value
+     * @param int    $expiration
+     */
+    public function compareAndSwap($casToken, $key, $value, $expiration = 0): bool;
 
     /**
      * Replace a value.

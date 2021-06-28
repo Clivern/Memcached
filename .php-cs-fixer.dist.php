@@ -1,39 +1,27 @@
 <?php
+
+declare(strict_types=1);
+
+use Clivern\CodingStandards\Rules;
+use PhpCsFixer\Config;
+use PhpCsFixer\Finder;
+
+
 $fileHeaderComment = <<<COMMENT
 This file is part of Clivern Memcached Bundle
 (c) Clivern <hello@clivern.com>
 COMMENT;
-$finder = PhpCsFixer\Finder::create()
+
+$finder = Finder::create()
+    ->name('.php_cs.dist')
     ->in(__DIR__)
-    ->exclude('var')
-;
-return PhpCsFixer\Config::create()
-    ->setIndent("    ")
-    ->setLineEnding("\n")
-    ->setRiskyAllowed(true)
-    ->setRules([
-        '@PSR2' => true,
-        '@Symfony' => true,
-        '@Symfony:risky' => true,
-        'array_syntax' => ['syntax' => 'long'],
-        'header_comment' => ['header' => $fileHeaderComment, 'separate' => 'both'],
-        'linebreak_after_opening_tag' => true,
-        'mb_str_functions' => true,
-        'no_php4_constructor' => true,
-        'no_unreachable_default_argument_value' => true,
-        'no_useless_else' => true,
-        'no_useless_return' => true,
-        'ordered_imports' => true,
-        'php_unit_strict' => true,
-        'phpdoc_order' => true,
-        'semicolon_after_instruction' => true,
-        'strict_comparison' => true,
-        'strict_param' => true,
-        'phpdoc_add_missing_param_annotation' => true,
-        'ordered_class_elements'=> true,
-        'phpdoc_types_order' => true,
-        'logical_operators' => true,
-    ])
+    ->exclude('vendor');
+
+$overrides = [
+    'declare_strict_types' => true,
+];
+
+return (new Config())
     ->setFinder($finder)
-    ->setCacheFile(__DIR__.'/.php_cs.cache')
-;
+    ->setRiskyAllowed(true)
+    ->setRules(Rules::PHP72($fileHeaderComment, $overrides));

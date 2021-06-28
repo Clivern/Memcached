@@ -35,6 +35,11 @@ Misc
 
 Changelog
 ---------
+Version 2.0.0:
+```
+Drop PHP 7.2 support.
+```
+
 Version 1.1.0:
 ```
 Support "check and set" Operation.

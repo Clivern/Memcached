@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of Clivern Memcached Bundle
  * (c) Clivern <hello@clivern.com>
@@ -19,7 +21,7 @@ class MemcachedClient implements MemcachedClientInterface
     public function __construct($server, $port)
     {
         $this->server = $server;
-        $this->port = $port;
+        $this->port   = $port;
 
         $this->client = new \Memcached();
         $this->client->setOption(\Memcached::OPT_COMPRESSION, false);
@@ -62,6 +64,14 @@ class MemcachedClient implements MemcachedClientInterface
      * {@inheritdoc}
      */
     public function cas($casToken, $key, $value, $expiration = 0): bool
+    {
+        return $this->client->cas($casToken, $key, $value, $expiration);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function compareAndSwap($casToken, $key, $value, $expiration = 0): bool
     {
         return $this->client->cas($casToken, $key, $value, $expiration);
     }

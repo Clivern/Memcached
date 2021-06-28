@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of Clivern Memcached Bundle
  * (c) Clivern <hello@clivern.com>
@@ -17,30 +19,30 @@ class MemcachedClientTest extends TestCase
     /**
      * Setup.
      */
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->memcachedClient = $this->createMock(MemcachedClient::class);
 
         $this->memcachedClient->method('quit')
-             ->willReturn(true);
+            ->willReturn(true);
 
         $this->memcachedClient->method('ping')
-             ->willReturn(true);
+            ->willReturn(true);
 
         $this->memcachedClient->method('add')
-             ->willReturn(true);
+            ->willReturn(true);
 
         $this->memcachedClient->method('set')
-             ->willReturn(true);
+            ->willReturn(true);
 
         $this->memcachedClient->method('replace')
-             ->willReturn(true);
+            ->willReturn(true);
 
         $this->memcachedClient->method('get')
-             ->willReturn(true);
+            ->willReturn(true);
 
         $this->memcachedClient->method('increment')
-             ->willReturn(true);
+            ->willReturn(true);
     }
 
     /**
@@ -48,7 +50,7 @@ class MemcachedClientTest extends TestCase
      */
     public function testPing()
     {
-        $this->assertTrue($this->memcachedClient->ping());
+        self::assertTrue($this->memcachedClient->ping());
     }
 
     /**
@@ -56,7 +58,7 @@ class MemcachedClientTest extends TestCase
      */
     public function testAdd()
     {
-        $this->assertTrue($this->memcachedClient->add('key', 'value'));
+        self::assertTrue($this->memcachedClient->add('key', 'value'));
     }
 
     /**
@@ -64,7 +66,7 @@ class MemcachedClientTest extends TestCase
      */
     public function testSet()
     {
-        $this->assertTrue($this->memcachedClient->set('key', 'value'));
+        self::assertTrue($this->memcachedClient->set('key', 'value'));
     }
 
     /**
@@ -72,7 +74,7 @@ class MemcachedClientTest extends TestCase
      */
     public function testReplace()
     {
-        $this->assertTrue($this->memcachedClient->replace('key', 'value'));
+        self::assertTrue($this->memcachedClient->replace('key', 'value'));
     }
 
     /**
@@ -80,7 +82,7 @@ class MemcachedClientTest extends TestCase
      */
     public function testGet()
     {
-        $this->assertTrue($this->memcachedClient->get('key'));
+        self::assertTrue($this->memcachedClient->get('key'));
     }
 
     /**
@@ -88,7 +90,7 @@ class MemcachedClientTest extends TestCase
      */
     public function testIncrement()
     {
-        $this->assertTrue($this->memcachedClient->increment('key'));
+        self::assertTrue($this->memcachedClient->increment('key'));
     }
 
     /**
@@ -96,6 +98,6 @@ class MemcachedClientTest extends TestCase
      */
     public function testQuit()
     {
-        $this->assertTrue($this->memcachedClient->quit());
+        self::assertTrue($this->memcachedClient->quit());
     }
 }
