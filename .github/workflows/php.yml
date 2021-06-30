@@ -9,16 +9,14 @@ jobs:
       fail-fast: false
       matrix:
         operating-system: [ubuntu-latest, windows-latest, windows-2019]
-        php-versions: ["7.3", "7.4", "8.0"]
+        php: ["7.3", "7.4", "8.0"]
     name: Run CI PHP ${{ matrix.php }}
     steps:
       - uses: actions/checkout@master
       - name: Setup PHP
-        uses: shivammathur/setup-php@2.11.0
+        uses: nanasess/setup-php@master
         with:
-          php-version: ${{ matrix.php-versions }}
-          coverage: xdebug #optional
-          extensions: memcache, memcached
+          php-version: ${{ matrix.php }}
       - run: php -v
 
       - name: Run CI
